@@ -91,7 +91,6 @@ const selectPhone = async () => {
 var cart = [];
 console.log(cart);
 
-
 const checkCart = (data, cartItem) => {
   let index = -1;
   data.forEach((item, i) => {
@@ -117,9 +116,23 @@ const addToCart = async (id) => {
         quantity: 1,
       };
       checkCart(cart, cartItem);
+      setLocalStorage();
       console.log(cart);
     })
     .catch(function (error) {
       console.log(error);
     });
 };
+
+function setLocalStorage() {
+  var dataString = JSON.stringify(cart);
+  localStorage.setItem("CART", dataString);
+}
+
+function getLocalStorage() {
+  if (localStorage.getItem("CART")) {
+    var dataString = localStorage.getItem("CART");
+    cart = JSON.parse(dataString);
+    renderTable(cart);
+  }
+}
