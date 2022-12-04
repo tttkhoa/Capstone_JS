@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+}
+
+.title {
+  margin: 40px;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #102A42;
+  letter-spacing: 2px;
+  /* position: relative; */
+}
+
+.card {
+  text-align: center;
+  transition: all 0.5s;
+  margin: 10px;
+  box-shadow: 0 30px 30px -10px rgba(0, 0, 0, 0.1);
+  border-radius: 1.15rem;
+}
+
+.card-img-top {
+  border-radius: 1.15rem;
+}
+
+.card:hover {
+  box-shadow: 0 30px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+.card h5 {
+  color: #191919;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.card .card-desc {
+  color: #181818;
+  font-size: 14.625px;
+  line-height: 27px;
+}
+
+.card-footer {
+  font-size: 1.5rem;
+  background-color: transparent;
+}
+
+.card-price {
+  margin-bottom: 0;
+}
+
+.myBtn {
+  padding: 0;
+  border: none;
+  transition: all .5s;
+}
+
+.myBtn:hover {
+  color: #56BFAA;
+}
+
+.myBtn span {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#selectProduct {
+  margin-left: 10px;
+  padding: 0px 5px;
+  border-radius: 10px;
+}
+
+#selectProduct:focus {
+  outline: none;
+}
+
+.bag-shopping {
+  position: absolute;
+  right: 2rem;
+  top: 1.2rem;
+  font-size: 2rem;
+}
+
+.total-qty {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  background: black;
+  color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+  text-align: center;
+  line-height: 1rem;
+  font-weight: 600;
+  top: 1rem;
+  right: 1.5rem;
+  user-select: none;
+  transition: all .5s;
+}
+
+/* Responsive */
+@media screen and (max-width:767.98px) {
+  .card-item {
+    display: inline-block !important;
+  }
+}
