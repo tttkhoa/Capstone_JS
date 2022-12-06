@@ -106,6 +106,20 @@ const checkCart = (data, cartItem) => {
   }
 };
 
+const setLocalStorage = () => {
+  var dataString = JSON.stringify(cart);
+  localStorage.setItem("CART", dataString);
+}
+
+const getLocalStorage = () => {
+  if (localStorage.getItem("CART")) {
+    var dataString = localStorage.getItem("CART");
+    cart = JSON.parse(dataString);
+    renderTable(cart);
+  }
+}
+
+
 const addToCart = async (id) => {
   await productService
     .getProductByIdApi(id)
@@ -124,15 +138,3 @@ const addToCart = async (id) => {
     });
 };
 
-function setLocalStorage() {
-  var dataString = JSON.stringify(cart);
-  localStorage.setItem("CART", dataString);
-}
-
-function getLocalStorage() {
-  if (localStorage.getItem("CART")) {
-    var dataString = localStorage.getItem("CART");
-    cart = JSON.parse(dataString);
-    renderTable(cart);
-  }
-}
