@@ -120,7 +120,7 @@ const renderCart = (data) => {
       </td>
       <td>$${cartItem.product.price}</td>
       <td>
-        <button class="btn btn-danger"> <i class="fa-solid fa-trash"></i> </button>
+        <button class="btn btn-danger" onclick="removeItem(${cartItem.product.id})"> <i class="fa-solid fa-trash"></i> </button>
       </td>
     <tr>
     `;
@@ -129,12 +129,8 @@ const renderCart = (data) => {
 
   getEle("tblDanhSachSP").innerHTML = content;
   getEle('total').style.display = 'block';
-  getEle('totalNoti').innerHTML = `Tổng tiền: $${totalMoney}`;
+  getEle('totalNoti').innerHTML = `Total: $${totalMoney}`;
 };
-
-const pay = (data) => {
-  data.length = 0;
-}
 
 const plus = (id) => {
   cart.forEach((item) => {
@@ -187,5 +183,21 @@ const addToCart = async (id) => {
       console.log(error);
     });
 };
+
+const pay = () => {  
+  cart = [];
+  renderCart(cart)
+  setLocalStorage();
+}
+
+const removeItem = (id) => {
+  cart.forEach((item,index) => {
+    if (item.product.id == id){
+      cart.splice(index,1)
+    }
+  })
+  setLocalStorage();
+  renderCart(cart);
+}
 
 getLocalStorage()

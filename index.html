@@ -39,8 +39,8 @@
     <section class="content">
       <div class="container">
         <h1 class="title text-center">Products</h1>
-        <select id="selectProduct" onchange="selectPhone()">
-          <option value="">Loại sản phẩm</option>
+        <select  id="selectProduct" onchange="selectPhone()">
+          <option value="">All</option>
           <option value="ip">Iphone</option>
           <option value="ss">Samsung</option>
         </select>
@@ -70,17 +70,17 @@
         <h1 class="title text-center">Cart</h1>
         <table class="table table-bordered text-center">
           <thead>
-            <th>Hình Ảnh</th>
-            <th>Tên</th>
-            <th>Số lượng</th>
-            <th>Giá</th>
-            <th>Xóa</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Action</th>
           </thead>
           <tbody id="tblDanhSachSP"></tbody>
         </table>
         <div class="text-right" id="total" style="display: none">
           <h4 id="totalNoti"></h4>
-          <button onclick="pay()" class="btn btn-success">Thanh toán</button>
+          <button onclick="pay()" class="btn btn-success"> Purchase</button>
         </div>
       </div>
     </section>
