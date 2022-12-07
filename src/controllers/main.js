@@ -89,7 +89,6 @@ const selectPhone = async () => {
 };
 
 var cart = [];
-console.log(cart);
 
 const checkCart = (data, cartItem) => {
   let index = -1;
@@ -106,19 +105,69 @@ const checkCart = (data, cartItem) => {
   }
 };
 
+const renderCart = (data) => {
+  let content = "";
+  let totalMoney = 0;
+  data.forEach((cartItem) => {
+    content += `
+    <tr>
+      <td><img src=".././img/${cartItem.product.img}" width="80px"></td>
+      <td>${cartItem.product.name}</td>
+      <td>
+      <button class="btn" id="btnMinus" onclick="minus(${cartItem.product.id})"><i class="fa-solid fa-minus"></i></button>
+      ${cartItem.quantity}
+      <button class="btn" id="btnPlus" onclick="plus(${cartItem.product.id})"><i class="fa-solid fa-plus"></i></button>
+      </td>
+      <td>$${cartItem.product.price}</td>
+      <td>
+        <button class="btn btn-danger"> <i class="fa-solid fa-trash"></i> </button>
+      </td>
+    <tr>
+    `;
+    totalMoney += cartItem.quantity * cartItem.product.price;
+  });
+
+  getEle("tblDanhSachSP").innerHTML = content;
+  getEle('total').style.display = 'block';
+  getEle('totalNoti').innerHTML = `Tổng tiền: $${totalMoney}`;
+};
+
+const pay = (data) => {
+  data.length = 0;
+}
+
+const plus = (id) => {
+  cart.forEach((item) => {
+    if (item.product.id == id && item.quantity >= 0){
+      item.quantity++;
+    }
+    setLocalStorage()
+    renderCart(cart);
+  })
+};
+
+const minus = (id) => {
+  cart.forEach((item) => {
+    if (item.product.id == id && item.quantity > 0){
+      item.quantity--;
+    }
+    setLocalStorage();
+    renderCart(cart);
+  })
+};
+
 const setLocalStorage = () => {
   var dataString = JSON.stringify(cart);
   localStorage.setItem("CART", dataString);
-}
+};
 
 const getLocalStorage = () => {
   if (localStorage.getItem("CART")) {
     var dataString = localStorage.getItem("CART");
     cart = JSON.parse(dataString);
-    renderTable(cart);
+    renderCart(cart);
   }
-}
-
+};
 
 const addToCart = async (id) => {
   await productService
@@ -131,10 +180,12 @@ const addToCart = async (id) => {
       };
       checkCart(cart, cartItem);
       setLocalStorage();
-      console.log(cart);
+      renderCart(cart);
+      // console.log(cart);
     })
     .catch(function (error) {
       console.log(error);
     });
 };
 
+getLocalStorage()

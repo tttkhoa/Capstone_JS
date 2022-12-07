@@ -109,6 +109,10 @@ p {
   transition: all .5s;
 }
 
+#tblDanhSachSP td{
+    vertical-align: middle;
+}
+
 /* Responsive */
 @media screen and (max-width:767.98px) {
   .card-item {
