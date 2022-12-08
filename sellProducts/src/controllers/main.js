@@ -23,7 +23,7 @@ const renderHTML = (data) => {
     content += `
         <div class="col-xl-4 col-md-6 col-sm-12 align-items-stretch d-flex card-item" >
         <div class="card">
-          <img src=".././img/${product.img}" class="card-img-top img-fluid" />
+          <img src="../sellProducts/./img/${product.img}" class="card-img-top img-fluid" />
           <div class="card-body">
             <h5 class="card-text">${product.name}</h5>
             <p class="card-desc">
@@ -111,7 +111,7 @@ const renderCart = (data) => {
   data.forEach((cartItem) => {
     content += `
     <tr>
-      <td><img src=".././img/${cartItem.product.img}" width="80px"></td>
+      <td><img src="../sellProducts/./img/${cartItem.product.img}" width="80px"></td>
       <td>${cartItem.product.name}</td>
       <td>
       <button class="btn" id="btnMinus" onclick="minus(${cartItem.product.id})"><i class="fa-solid fa-minus"></i></button>
