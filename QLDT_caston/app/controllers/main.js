@@ -1,5 +1,7 @@
 
 var productservice = new productService();
+var validation = new validation();
+
 function getEle(id) {
    return document.getElementById(id)
 }
@@ -75,6 +77,21 @@ function addproduct() {
    var moTa = getEle("MoTa").value;
    var type = getEle("type").value;
    var products = new product("", tenSP, giaBan, manHinh, backCamera, frontCamera, hinhAnh, moTa, type)
+  
+   var isvalis = true;
+   isvalis &= validation.kiemtrarong(tenSP,"tbtensp","(*) Vui lòng nhập sản phẩm")
+   isvalis &= validation.kiemtrarong(giaBan, "tbigiaban", "(*) Vui lòng nhập giá bán")
+   isvalis &= validation.kiemtrarong(manHinh, "tbmanhinh","(*) vui long nhập thông tin màn hình")
+   isvalis &= validation.kiemtrarong(backCamera,"tbbackcamera" ,"(*) Vui lòng nhập thông tin camera sau")
+   isvalis &= validation.kiemtrarong(frontCamera,"tbfrontcamera" ,"(*) Vui lòng nhập thông tin camera sau")
+   isvalis &= validation.kiemtrarong(hinhAnh,"tbhinhanh","(*) Vui lòng chọn hình ảnh")
+   isvalis &= validation.kiemtrarong(moTa,"tbmota", "(*) Vui lòng nhập mô tả")
+   isvalis &= validation.kiemtrarong(type,"tbtype", "(*) Vui lòng nhập Type")
+if(!isvalis) return;
+  
+  
+  
+  
    productservice.addproductAPI(products)
       .then(function (result) {
          alert("Thêm sản phẩm thành công")
@@ -87,6 +104,8 @@ function addproduct() {
       })
 
 
+ 
+// return product;
 }
 
 
